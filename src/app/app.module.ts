@@ -5,7 +5,7 @@ import { RouterModule, Route} from '@angular/router';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgSelectOption } from '@angular/forms';
 import { MatSidenavModule } from  '@angular/material/sidenav';
 import { MatBadgeModule } from  '@angular/material/badge';
 import {A11yModule} from '@angular/cdk/a11y';
@@ -50,17 +50,34 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import { EstudiantesComponent } from './estudiantes/estudiantes.component';
+import { InicioComponent } from './inicio/inicio.component';
+import { RegistroComponent } from './registro/registro.component';
+import { CalificacionesComponent } from './calificaciones/calificaciones.component';
+
+
+import {NgSelectModule, NgOption} from '@ng-select/ng-select';
+import { InformacionComponent } from './informacion/informacion.component';
 
 const rutas: Route[] = [
-  {path:'estudiantes', component: EstudiantesComponent}
+  {path:'inicio', component: InicioComponent},
+  {path:'estudiantes', component: EstudiantesComponent},
+  {path:'calificaciones', component: CalificacionesComponent},
+  {path:'registro', component: RegistroComponent},
+  {path:'informacion', component: InformacionComponent},
+  {path:'', component: InicioComponent}
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
-    EstudiantesComponent
+    EstudiantesComponent,
+    InicioComponent,
+    RegistroComponent,
+    CalificacionesComponent,
+    InformacionComponent
   ],
   imports: [
+    NgSelectModule,
     BrowserModule,
     HttpClientModule,
     MatSidenavModule,

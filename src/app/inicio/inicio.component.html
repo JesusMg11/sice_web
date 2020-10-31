@@ -1,0 +1,24 @@
+<br><br>
+<div class="container">
+    <br><br>
+    <div class="col-12 user-img" style="text-align: center;">
+        <img src="../../assets/itsch.png" width="100px"/>
+        </div>
+        <br>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" name="user" id="user" placeholder="Usuario"
+            [(ngModel)]="datosUsuario.usuario">
+    </div>
+    <div class="input-group mb-3">
+        <input type="password" name="pass" id="pass" class="form-control" placeholder="Contraseña"
+            [(ngModel)]="datosUsuario.password">
+    </div>
+    <div style="text-align: center;">
+        <div class="btn-group mb-3">
+            <button class="btn btn-info btn-md" name="btn1" (click)="entrar()">Entrar</button>
+
+            <button class="btn btn-primary btn-md" name="btn2" (click)="registro()">Registrar</button>
+        </div>
+    </div>
+    <br>
+</div>

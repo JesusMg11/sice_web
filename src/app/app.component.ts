@@ -9,15 +9,7 @@ import { NavigationEnd, Router } from '@angular/router';
 
 export class AppComponent implements OnInit{
   title = 'sice-app';
-  opened = false;
-  inicio(){
-    this.router.navigate(['/estudiantes']);
-    
-  }
-
-  constructor( private router:Router) {
-
-  }
+ 
 
   ngOnInit(): void {
   }
