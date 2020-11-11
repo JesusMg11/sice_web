@@ -45,10 +45,34 @@ export class RespuestaService {
     return this.http.post(URL + "alumnos.php", formData);
   }
 
+  postAviso(mensaje){
+    let formData = new FormData();
+    formData.append('mensaje', mensaje);
+    return this.http.post(URL + "avisos.php", formData);
+  }
+
   getAvisos(id){
     let Params = new HttpParams();
     Params = Params.append('id', id);
     return this.http.get(URL + 'avisos.php', {params: Params});
+  }
+
+  getDocentes(id){
+    let Params = new HttpParams();
+    Params = Params.append('id', id);
+    return this.http.get(URL + 'docentes.php', {params: Params});
+  }
+
+  postDocente(maestro){
+    let formData = new FormData();
+    formData.append('nombre', maestro.nombre);
+    formData.append('ap_pat', maestro.ap_pat);
+    formData.append('ap_mat', maestro.ap_mat);
+    formData.append('correo', maestro.correo);
+    formData.append('telefono', maestro.telefono);
+    formData.append('contra', maestro.contra);
+
+    return this.http.post(URL + "docentes.php", formData);
   }
 
 }

@@ -54,9 +54,13 @@ import { InicioComponent } from './inicio/inicio.component';
 import { RegistroComponent } from './registro/registro.component';
 import { CalificacionesComponent } from './calificaciones/calificaciones.component';
 
-
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import {NgSelectModule, NgOption} from '@ng-select/ng-select';
 import { InformacionComponent } from './informacion/informacion.component';
+import { MaestrosComponent } from './maestros/maestros.component';
+import { AdminComponent } from './admin/admin.component';
+import { MaestrosAdminComponent } from './maestros-admin/maestros-admin.component';
+import { AvisosComponent } from './avisos/avisos.component';
 
 const rutas: Route[] = [
   {path:'inicio', component: InicioComponent},
@@ -64,6 +68,10 @@ const rutas: Route[] = [
   {path:'calificaciones', component: CalificacionesComponent},
   {path:'registro', component: RegistroComponent},
   {path:'informacion', component: InformacionComponent},
+  {path:'admin', component: AdminComponent},
+  {path:'maestros', component: MaestrosComponent},
+  {path:'maestrosAdmin', component: MaestrosAdminComponent},
+  {path:'avisos', component: AvisosComponent},
   {path:'', component: InicioComponent}
 ]
 
@@ -74,9 +82,14 @@ const rutas: Route[] = [
     InicioComponent,
     RegistroComponent,
     CalificacionesComponent,
-    InformacionComponent
+    InformacionComponent,
+    MaestrosComponent,
+    AdminComponent,
+    MaestrosAdminComponent,
+    AvisosComponent
   ],
   imports: [
+    CKEditorModule,
     NgSelectModule,
     BrowserModule,
     HttpClientModule,

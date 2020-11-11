@@ -16,37 +16,33 @@
     <button mat-icon-button (click)="opened=!opened"><mat-icon>menu</mat-icon></button>
     <!--Fin boton-->
     <router-outlet></router-outlet>
-    <div class="container">
-    <div class="row">
-        <div class="col">
-            <table class="table table-hover table-dark">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Apellido Paterno</th>
-                        <th>Apellido Materno</th>
-                        <th>Tipo</th>
-                        <th>Clave</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let datos of usuario">
-                        <td>{{datos.nombre_alu}}</td>
-                        <td>{{datos.ap_pat_alu}}</td>
-                        <td>{{datos.ap_mat_alu}}</td>
-                        <td>{{datos.tipo_alu}}</td>
-                        <td>{{datos.clave_unica_alu}}</td>
-                        <td>
-                            <button class="btn btn-primary btn-sm" ><i class="fas fa-pen"></i></button>
-                            &nbsp;
-                            <button class="btn btn-danger btn-sm" ><i class="fas fa-trash"></i></button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+    <div class="container" >
+    
+        <div class="row" *ngFor="let datos of usuario">
+            <div class="col-md-12">
+              <div class="container mt-3 uno">
+                <div class="media border p-3 mb-2 bg-light text-dark">
+                  <div class="media-body mymediabody ">
+                      <div style="text-align: center;"> 
+                    <h3 style="color: black;"><b>MIS DATOS</b>
+                    </h3>
+                      </div>
+                    <p class="text-justify" style="font-size:16px;color:black">
+                        <b>Nombre(s):</b><br><br> {{datos.nombre_alu}} <br><hr>
+                        <b>Apellido(s):</b><br><br> {{datos.ap_pat_alu}}  {{datos.ap_mat_alu}}<br><hr>
+                        <b>Tipo:</b><br><br> {{datos.tipo_alu}} <br><hr>
+                        <b>Clave:</b><br><br> {{datos.clave_unica_alu}} <br><hr>
+                        <b>Correo electrónico:</b><br><br> {{datos.correo_alu}} <br><hr>
+                        <b>Grupo:</b><br><br> -- 
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+    
+    
+          </div>
     </div>
     <!--FIN CODIGO-->
     </mat-sidenav-content>

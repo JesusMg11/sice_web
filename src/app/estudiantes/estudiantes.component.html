@@ -1,54 +1,95 @@
 <!--Menu lateral inico-->
 <mat-sidenav-container>
-    <mat-sidenav [(opened)]="opened">
-      <mat-nav-list>
-        <a mat-list-item (click)="inicio()">Inicio</a>
-        <a mat-list-item (click)="info()">Mi Información</a>
-        <a mat-list-item (click)="calificaciones()">Calificaciones</a>
-        <a mat-list-item (click)="salir()">Salir</a>
-      </mat-nav-list>
-    </mat-sidenav>
-    <!--Menu lateral fin-->
-    
-    <!--TODO CODIGO AQUI-->
-    <mat-sidenav-content>
-      <!--Boton para abrir menú-->
-    <button mat-icon-button (click)="opened=!opened"><mat-icon>menu</mat-icon></button>
+  <mat-sidenav [(opened)]="opened">
+    <mat-nav-list>
+      <a mat-list-item (click)="inicio()">Inicio</a>
+      <a mat-list-item (click)="info()">Mi Información</a>
+      <a mat-list-item (click)="calificaciones()">Calificaciones</a>
+      <a mat-list-item (click)="salir()">Salir</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <!--Menu lateral fin-->
+
+  <!--TODO CODIGO AQUI-->
+  <mat-sidenav-content>
+    <!--Boton para abrir menú-->
+    <button mat-icon-button (click)="opened=!opened">
+      <mat-icon>menu</mat-icon>
+    </button>
     <!--Fin boton-->
     <router-outlet></router-outlet>
-        <div class="container">
-          <div class="row">
-        <h3 *ngFor="let alumno of usuario">HOLA DE NUEVO {{alumno.nombre_alu}}</h3>
-          </div>
-        <div class="row">
-          <h1>AVISOS</h1>
-          <hr>
-                <div class="col">
-                    <table class="table table-hover table-dark">
-                        <thead>
-                            <tr>
-                                <th>Aviso</th>
-                                <th>Fecha</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let datos of avisos">
-                                <td>{{datos.mensaje_avi}}</td>
-                                <td>{{datos.fecha_avi}}</td>
-                                
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+    <div class="container">
+      <div class="row">
+        <h1 *ngFor="let alumno of usuario">HOLA DE NUEVO {{alumno.nombre_alu}}</h1>
 
-        <div class="row">
-          <h1>INFO</h1>
+      </div>
+      <hr>
+      <div class="row">
+        <h1 style="text-shadow: 3px 3px 5px #3f796f;"><b>AVISOS</b></h1>
+        <hr>
+      </div>
+
+      <div class="row" *ngFor="let datos of avisos">
+        <div class="col-md-12">
+          <div class="container mt-3 uno">
+            <div class="media border p-3 mb-2 bg-light text-dark">
+              <div class="media-body mymediabody ">
+                <h3 style="color: black;"><b>{{datos.fecha_avi | date: 'fullDate'}}</b>
+                </h3>
+                <p class="text-dark text-justify" style="font-size:16px" [innerHTML]="datos.mensaje_avi">
+                <!--{{datos.mensaje_avi}}-->
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
+
+
+
+      </div>
+
+      <hr>
+      <div class="row">
+        <h1 style="text-shadow: 3px 3px 5px #3f796f;"><b>INFO</b></h1>
+        <hr>
+      </div>
+
+
+      <div class="row" >
+        <div class="col-md-12">
+          <div class="container mt-3 uno">
+            <div class="media border p-3 mb-2 bg-light text-dark">
+              <div class="media-body mymediabody ">
+
+                <h3 style="color: black;"><b>COSTOS</b>
+                </h3>
+                <p class="text-dark text-justify" style="font-size: 16px">
+                 · Alumnos internos: $700.00 mxn. <br>
+                 · Alumnos externos: $850.00 mxn.  
+                </p>
+
+                <h3 style="color: black;"><b>CONTACTO</b>
+                </h3>
+                <p class="text-dark text-justify" style="font-size: 16px">
+                 · Teléfono: 786 154 9020 <br>
+                 · Correo electrónico: idiomas@cdhidalgo.tecnm.mx 
+                </p>
+
+                <h3 style="color: black;"><b>CUENTAS BANCARIAS</b>
+                </h3>
+                <p class="text-dark text-justify" style="font-size: 16px">
+                 · Cuenta <b>0115142997</b> a nombre del Instituto Tecnológico Superior de Ciudad Hidalgo en BBVA BANCOMER<br>
+                </p>
+
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+
+
+
+    </div>
     <!--FIN CODIGO-->
-    </mat-sidenav-content>
-    </mat-sidenav-container>
-    
-    
-    
+  </mat-sidenav-content>
+</mat-sidenav-container>

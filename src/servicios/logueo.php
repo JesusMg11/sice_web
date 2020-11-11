@@ -9,10 +9,18 @@ if(isset($_GET['user']) && isset($_GET['pass'])){
 $usuario = $_GET['user'];
 $contra = $_GET['pass'];
 $users = new DataBase('alumnos');
-//$dat = $users -> sql_query("SELECT * FROM alumnos WHERE clave_unica_alu='".$usuario."'");
-$resultado = $users->read( array('clave_unica_alu'=>$usuario, 'contra_alu'=>$contra));
+$resultado = $users->read( array('clave_unica_alu'=>$usuario));
+//echo json_encode($resultado['nombre_alu']);
 if($resultado){
-    $respuesta = array('auth' => 'si', 'usuario' => $usuario);
+    if(password_verify($contra, $resultado['contra_alu'])){ // if de comprobar contraseñas
+        if($resultado['clave_unica_alu'] == "ADMINISTRADOR"){
+            $respuesta = array('auth' => 'admin', 'usuario' => $usuario);
+        }else{
+            $respuesta = array('auth' => 'si', 'usuario' => $usuario);
+        }
+    }else{
+        $respuesta = array('auth' => 'no', 'usuario' => $usuario);
+    }
     
 }else{
     $respuesta = array('auth' => 'no', 'usuario' => $usuario);
@@ -20,5 +28,6 @@ if($resultado){
 echo json_encode($respuesta);
 }else{
     $respuesta = array('auth' => 'no');
+    echo json_encode($respuesta);
 }
 }

@@ -25,7 +25,10 @@ export class InicioComponent implements OnInit {
   entrar(){
     if(this.datosUsuario.usuario != '' || this.datosUsuario.usuario!= ''){
     this.datos.login(this.datosUsuario.usuario, this.datosUsuario.password).subscribe(resp => {
-      if(resp['auth']=='si'){
+      if(resp['auth']=='admin'){
+        this.datos.setCuenta(this.datosUsuario.usuario);
+        this.router.navigate(['/admin']);
+      }else if(resp['auth']=='si'){
         this.datos.setCuenta(this.datosUsuario.usuario);
         this.router.navigate(['/estudiantes']);
       }else{

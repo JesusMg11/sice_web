@@ -1,5 +1,5 @@
 <br><br>
-<div class="container">
+<div class="container" (keyup.enter)="registrar()">
     <br><br>
     <div class="col-12 user-img" style="text-align: center;">
         <img src="../../assets/itsch.png" width="100px" />
@@ -8,26 +8,26 @@
 
     <div class="input-group mb-3">
         <input input type="text" name="nombres" id="nombres" class="form-control input-lg" placeholder="Nombre (s)"
-            [(ngModel)]="nuevoAlumno.nombre">
+            [(ngModel)]="nuevoAlumno.nombre" style="text-transform: uppercase">
     </div>
 
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6 mx-auto">
             <div class="input-group mb-3">
                 <input type="text" name="ap_pat" id="ap_pat" class="form-control input-lg"
-                    placeholder="Apellido Paterno" [(ngModel)]="nuevoAlumno.ap_pat">
+                    placeholder="Apellido Paterno" [(ngModel)]="nuevoAlumno.ap_pat" style="text-transform: uppercase">
             </div>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-6 mx-auto">
             <div class="input-group mb-3">
                 <input type="text" name="ap_mat" id="ap_mat" class="form-control input-lg"
-                    placeholder="Apellido Materno" [(ngModel)]="nuevoAlumno.ap_mat">
+                    placeholder="Apellido Materno" [(ngModel)]="nuevoAlumno.ap_mat" style="text-transform: uppercase">
             </div>
         </div>
     </div>
 
     <div class="input-group mb-3">
-        <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Correo Electrónico"
+        <input type="email" name="email" id="email" class="form-control input-lg" placeholder="CORREO ELECTRÓNICO"
             [(ngModel)]="nuevoAlumno.correo">
     </div>
 
@@ -37,7 +37,6 @@
             bindLabel="name"
             bindValue="name"
             [multiple]="false"
-            placeholder="SELECCIONA UNA OPCIÓN"
             [(ngModel)]="nuevoAlumno.tipo">
             
  </ng-select>
@@ -45,7 +44,7 @@
         <div class="col-xs-12 col-sm-6 col-md-6 mx-auto">
             <div class="input-group mb-3">
                 <input type="text" name="clave" id="clave" class="form-control input-lg"
-                    placeholder="No. Control / CURP" [(ngModel)]="nuevoAlumno.clave">
+                    placeholder="No. Control / CURP" [(ngModel)]="nuevoAlumno.clave" style="text-transform: uppercase">
             </div>
         </div>
     </div>
@@ -53,14 +52,14 @@
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6 mx-auto">
             <div class="input-group mb-3">
-                <input type="password" name="pass" id="pass" class="form-control input-lg" placeholder="Contraseña"
+                <input type="password" name="pass" id="pass" class="form-control input-lg" placeholder="CONTRASEÑA"
                     [(ngModel)]="nuevoAlumno.contra">
             </div>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-6 mx-auto">
             <div class="input-group mb-3">
                 <input type="password" name="con_pass" id="con_pass" class="form-control input-lg"
-                    placeholder="Confirma Contraseña"  [(ngModel)]="nuevoAlumno.conTemp">
+                    placeholder="CONFIRMAR CONTRASEÑA"  [(ngModel)]="nuevoAlumno.conTemp">
             </div>
         </div>
     </div>

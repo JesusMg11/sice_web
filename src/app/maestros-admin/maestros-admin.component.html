@@ -1,0 +1,151 @@
+<mat-sidenav-container>
+    <mat-sidenav [(opened)]="opened">
+        <mat-nav-list>
+            <a mat-list-item (click)="inicio()">Inicio</a>
+            <a mat-list-item (click)="docentes()">Docentes</a>
+            <a mat-list-item (click)="salir()">Grupos</a>
+            <a mat-list-item (click)="salir()">Alumnos</a>
+            <a mat-list-item (click)="avisos()">Avisos</a>
+            <a mat-list-item (click)="salir()">Salir</a>
+        </mat-nav-list>
+
+    </mat-sidenav>
+    <!--Menu lateral fin-->
+
+    <!--TODO CODIGO AQUI-->
+    <mat-sidenav-content>
+        <!--Boton para abrir menú-->
+        <button mat-icon-button (click)="opened=!opened">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <!--Fin boton-->
+        <router-outlet></router-outlet>
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="container mt-3 uno">
+                        <div class="media border p-3 mb-2 bg-light text-dark">
+                            <div class="media-body mymediabody ">
+                                <div style="text-align: center;">
+                                    <h3 style="color: black;"><b>DOCENTES</b>
+                                    </h3>
+                                    <button class="btn btn-primary btn-sm"
+                                        data-toggle='modal' data-target='#modalEditar'>
+                                        <i class="fa fa-address-book" style="color:white;font-size:20px"></i>
+                                        AGREGAR</button>
+                                </div>
+                                <hr>
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-bordered order-table">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th>NOMBRE</th>
+                                                <th>CORREO ELECTRÓNICO</th>
+                                                <th>TELÉFONO</th>
+                                                <th>GRUPOS</th>
+                                                <th>ACCIONES</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of maestro" style="color: black;">
+                                                
+                                                <td>{{item.nombre_mae}} {{item.ap_pat_mae}} {{item.ap_mat_mae}}</td>
+                                                <td>{{item.correo_mae}}</td>
+                                                <td>{{item.telefono_mae}}</td>
+                                                <td>--</td>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="modal fade" id="modalEditar" tabindex="1" role="dialog" aria-labelledby="exampleModalLongTitle"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title" id="exampleModalLongTitle"><b>AGREGAR DOCENTE</b></h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">NOMBRE(S):</div>
+                                </div>
+                                <input type="text" class="form-control" id="nombre" placeholder="INGRESE LOS NOMBRE(S)" style="text-transform: uppercase"
+                                [(ngModel)]="nuevoMaestro.nombre">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">APELLIDO PATERNO:</div>
+                                </div>
+                                <input type="text" class="form-control" id="ap_pat" placeholder="INGRESE EL APELLIDO" style="text-transform: uppercase"
+                                [(ngModel)]="nuevoMaestro.ap_pat">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">APELLIDO MATERNO:</div>
+                                </div>
+                                <input type="text" class="form-control" id="ap_mat" placeholder="INGRESE EL APELLIDO" style="text-transform: uppercase"
+                                [(ngModel)]="nuevoMaestro.ap_mat">
+                            </div>
+                            
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">CORREO ELECTRÓNICO:</div>
+                                </div>
+                                <input type="email" class="form-control" id="email" placeholder="INGRESE EL CORREO"
+                                [(ngModel)]="nuevoMaestro.correo">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">TELÉFONO:</div>
+                                </div>
+                                <input type="number" class="form-control" id="email" placeholder="INGRESE EL TELÉFONO"
+                                [(ngModel)]="nuevoMaestro.telefono">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">CONTRASEÑA:</div>
+                                </div>
+                                <input type="password" class="form-control" id="contra" placeholder="INGRESE LA CONTRASEÑA"
+                                [(ngModel)]="nuevoMaestro.contra">
+                            </div>
+
+                        </div>
+
+                        
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                (click)="agregar()">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+        <!--FIN CODIGO-->
+    </mat-sidenav-content>
+
+</mat-sidenav-container>
