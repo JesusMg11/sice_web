@@ -2,6 +2,3 @@
 @import "~@ng-select/ng-select/themes/default.theme.css";
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-.ck-editor__editable_inline {
-    width : 1050px !important;
-}

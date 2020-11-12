@@ -3,7 +3,7 @@
         <mat-nav-list>
             <a mat-list-item (click)="inicio()">Inicio</a>
             <a mat-list-item (click)="docentes()">Docentes</a>
-            <a mat-list-item (click)="salir()">Grupos</a>
+            <a mat-list-item (click)="grupos()">Grupos</a>
             <a mat-list-item (click)="salir()">Alumnos</a>
             <a mat-list-item (click)="avisos()">Avisos</a>
             <a mat-list-item (click)="salir()">Salir</a>
@@ -15,7 +15,7 @@
     <!--TODO CODIGO AQUI-->
     <mat-sidenav-content>
         <!--Boton para abrir menú-->
-        <button mat-icon-button (click)="opened=!opened">
+        <button mat-icon-button (click)="opened=!opened" style="position: fixed;">
             <mat-icon>menu</mat-icon>
         </button>
         <!--Fin boton-->
@@ -39,8 +39,9 @@
                                 <hr>
                                 <div class="table-responsive">
                                     <table class="table table-hover table-bordered order-table">
-                                        <thead class="thead-light">
+                                        <thead class="table-active">
                                             <tr>
+                                                <th>CLAVE</th>
                                                 <th>NOMBRE</th>
                                                 <th>CORREO ELECTRÓNICO</th>
                                                 <th>TELÉFONO</th>
@@ -50,7 +51,7 @@
                                         </thead>
                                         <tbody>
                                             <tr *ngFor="let item of maestro" style="color: black;">
-                                                
+                                                <td>{{item.id_mae}}</td>
                                                 <td>{{item.nombre_mae}} {{item.ap_pat_mae}} {{item.ap_mat_mae}}</td>
                                                 <td>{{item.correo_mae}}</td>
                                                 <td>{{item.telefono_mae}}</td>

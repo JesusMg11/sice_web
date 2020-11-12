@@ -36,4 +36,25 @@ switch($_SERVER['REQUEST_METHOD']){
         header("HTTP/1.1 200 OK");
         echo json_encode($res);
     break;
+    case "PUT":
+        if(isset($_GET['id']) && isset($_GET['mensaje'])){
+                $where = array('id_avi'=>$_GET['id']);
+            $datos = array('mensaje_avi'=>$_GET['mensaje']);
+            $reg = $tabla->update($datos,$where);
+            $res = array("result"=>"ok","msg"=>"Se guardo el aviso", "num"=>$reg);
+        }else{
+            $res = array("result"=>"no","msg"=>"Faltan datos");
+        }
+        echo json_encode($res);
+    break;
+    case "DELETE":
+        if(isset($_GET['id'])){
+            $where = array('id_avi'=>$_GET['id']);
+            $reg = $tabla->delete($where);
+            $res = array("result"=>"ok","msg"=>"Se elimino el mensaje", "num"=>$reg);
+        }else{
+            $res = array("result"=>"no","msg"=>"Faltan datos");
+        }
+        echo json_encode($res);
+    break;
 }

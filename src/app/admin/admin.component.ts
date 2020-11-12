@@ -29,6 +29,9 @@ export class AdminComponent implements OnInit {
   aviso(){
     this.router.navigate(['/avisos']);
   }
+  grupos(){
+    this.router.navigate(['/grupos']);
+  }
 
   obtenerAvisos(){
     this.datos.getAvisos("0").subscribe(resp=>{

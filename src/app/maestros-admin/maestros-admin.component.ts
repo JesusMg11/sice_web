@@ -29,6 +29,9 @@ export class MaestrosAdminComponent implements OnInit {
   avisos(){
     this.router.navigate(['/avisos']);
   }
+  grupos(){
+    this.router.navigate(['/grupos']);
+  }
 
 
   agregar(){

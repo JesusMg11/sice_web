@@ -11,7 +11,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 })
 export class RegistroComponent implements OnInit {
   conTemp = {con:''};
-  nuevoAlumno = {nombre:'', ap_pat:'', ap_mat:'', tipo:'', clave:'', correo:'', contra:'', conTemp:''};
+  nuevoAlumno = {nombre:'', ap_pat:'', ap_mat:'', tipo:'ESTUDIANTE', clave:'', correo:'', contra:'', conTemp:''};
   
   tipos = [
     {id: 1, name:'ESTUDIANTE'},

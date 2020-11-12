@@ -51,6 +51,21 @@ export class RespuestaService {
     return this.http.post(URL + "avisos.php", formData);
   }
 
+  putAviso(msg){
+    let Params = new HttpParams();
+    Params = Params.append('id', msg.id);
+    Params = Params.append('mensaje', msg.mensaje);
+
+    return this.http.put(URL + "avisos.php", null, { params: Params});
+  }
+
+  deleteAviso(msg){
+    let Params = new HttpParams();
+    Params = Params.append('id', msg.id);
+    return this.http.delete(URL + "avisos.php", { params: Params});
+  }
+
+
   getAvisos(id){
     let Params = new HttpParams();
     Params = Params.append('id', id);
