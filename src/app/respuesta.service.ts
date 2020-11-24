@@ -20,6 +20,13 @@ export class RespuestaService {
     return this.http.get(URL + "logueo.php",{params:Params});
   }
 
+  loginMaestros(u, p){
+    let Params = new HttpParams();
+    Params = Params.append('correo', u);
+    Params = Params.append('pass', p);
+    return this.http.get(URL + "logueoMaestros.php",{params:Params});
+  }
+
   setCuenta(user){
     this.cuenta.user = user;
   }
@@ -30,6 +37,11 @@ export class RespuestaService {
   getUsusarios(u){
     let Params = new HttpParams();
     Params = Params.append('user', u);
+    return this.http.get(URL + "alumnos.php", {params:Params});
+  }
+  getAlumnos(u){
+    let Params = new HttpParams();
+    Params = Params.append('alu', u);
     return this.http.get(URL + "alumnos.php", {params:Params});
   }
   postUsuario(alumno){
@@ -78,6 +90,12 @@ export class RespuestaService {
     return this.http.get(URL + 'docentes.php', {params: Params});
   }
 
+  getOnlyDocente(correo){
+    let Params = new HttpParams();
+    Params = Params.append('correo_mae', correo);
+    return this.http.get(URL + 'docentes.php', {params: Params});
+  }
+
   postDocente(maestro){
     let formData = new FormData();
     formData.append('nombre', maestro.nombre);
@@ -88,6 +106,38 @@ export class RespuestaService {
     formData.append('contra', maestro.contra);
 
     return this.http.post(URL + "docentes.php", formData);
+  }
+
+  postGrupo(grupo){
+    let formData = new FormData();
+    formData.append('nombre', grupo.nombre);
+    formData.append('periodo', grupo.periodo);
+    formData.append('modalidad', grupo.modalidad);
+    formData.append('anio', grupo.anio);
+    formData.append('lugares', grupo.lugares);
+    formData.append('id_maestro', grupo.id_maestro);
+
+    return this.http.post(URL + "grupos.php", formData);
+  }
+
+  getGrupos(id){
+    let Params = new HttpParams();
+    Params = Params.append('id', id);
+    return this.http.get(URL + 'grupos.php', {params: Params});
+  }
+
+  getGruposBandera(id){
+    let Params = new HttpParams();
+    Params = Params.append('bandera', id);
+    return this.http.get(URL + 'grupos.php', {params: Params});
+  }
+
+  postInscripcionGrupo(datos){
+    let formData = new FormData();
+    formData.append('clave_unica_alu', datos.id_alumno);
+    formData.append('id_gru',datos.id_grupo);
+
+    return this.http.post(URL + "inscripcionGrupo.php", formData);
   }
 
 }

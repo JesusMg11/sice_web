@@ -61,6 +61,10 @@ export class InicioComponent implements OnInit {
   registro(){
     this.router.navigate(['/registro']);
   }
+  
+  inicioDocentes(){
+    this.router.navigate(['/inicioMaestros']);
+  }
   constructor(private router:Router, private datos: RespuestaService ) { 
 
   }

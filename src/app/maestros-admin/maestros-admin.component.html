@@ -4,7 +4,7 @@
             <a mat-list-item (click)="inicio()">Inicio</a>
             <a mat-list-item (click)="docentes()">Docentes</a>
             <a mat-list-item (click)="grupos()">Grupos</a>
-            <a mat-list-item (click)="salir()">Alumnos</a>
+            <a mat-list-item (click)="alum()">Alumnos</a>
             <a mat-list-item (click)="avisos()">Avisos</a>
             <a mat-list-item (click)="salir()">Salir</a>
         </mat-nav-list>
@@ -45,7 +45,6 @@
                                                 <th>NOMBRE</th>
                                                 <th>CORREO ELECTRÓNICO</th>
                                                 <th>TELÉFONO</th>
-                                                <th>GRUPOS</th>
                                                 <th>ACCIONES</th>
                                             </tr>
                                         </thead>
@@ -55,7 +54,6 @@
                                                 <td>{{item.nombre_mae}} {{item.ap_pat_mae}} {{item.ap_mat_mae}}</td>
                                                 <td>{{item.correo_mae}}</td>
                                                 <td>{{item.telefono_mae}}</td>
-                                                <td>--</td>
                                                 <td></td>
                                             </tr>
                                         </tbody>

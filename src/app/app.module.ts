@@ -62,6 +62,9 @@ import { AdminComponent } from './admin/admin.component';
 import { MaestrosAdminComponent } from './maestros-admin/maestros-admin.component';
 import { AvisosComponent } from './avisos/avisos.component';
 import { GruposComponent } from './grupos/grupos.component';
+import { AlumnosAdminComponent } from './alumnos-admin/alumnos-admin.component';
+import { InicioMaestrosComponent } from './inicio-maestros/inicio-maestros.component';
+import { CalificacionesMaestrosComponent } from './calificaciones-maestros/calificaciones-maestros.component';
 
 const rutas: Route[] = [
   {path:'inicio', component: InicioComponent},
@@ -74,6 +77,9 @@ const rutas: Route[] = [
   {path:'maestrosAdmin', component: MaestrosAdminComponent},
   {path:'avisos', component: AvisosComponent},
   {path:'grupos', component: GruposComponent},
+  {path:'estudiantesAdmin', component: AlumnosAdminComponent},
+  {path:'inicioMaestros', component: InicioMaestrosComponent},
+  {path:'calificacionesMaestros', component: CalificacionesMaestrosComponent},
   {path:'', component: InicioComponent}
 ]
 
@@ -89,7 +95,10 @@ const rutas: Route[] = [
     AdminComponent,
     MaestrosAdminComponent,
     AvisosComponent,
-    GruposComponent
+    GruposComponent,
+    AlumnosAdminComponent,
+    InicioMaestrosComponent,
+    CalificacionesMaestrosComponent
   ],
   imports: [
     CKEditorModule,

@@ -32,6 +32,10 @@ export class AdminComponent implements OnInit {
   grupos(){
     this.router.navigate(['/grupos']);
   }
+  alum(){
+    this.router.navigate(['/estudiantesAdmin']);
+  }
+
 
   obtenerAvisos(){
     this.datos.getAvisos("0").subscribe(resp=>{

@@ -1,0 +1,108 @@
+<mat-sidenav-container>
+    <mat-sidenav [(opened)]="opened">
+      <mat-nav-list>
+        <a mat-list-item (click)="inicio()">Inicio</a>
+        <a mat-list-item (click)="docentes()">Docentes</a>
+        <a mat-list-item (click)="grupos()">Grupos</a>
+        <a mat-list-item (click)="alum()">Alumnos</a>
+        <a mat-list-item (click)="aviso()">Avisos</a>
+        <a mat-list-item (click)="salir()">Salir</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <!--Menu lateral fin-->
+  
+    <!--TODO CODIGO AQUI-->
+    <mat-sidenav-content>
+      <!--Boton para abrir menú-->
+      <button mat-icon-button (click)="opened=!opened" style="position: fixed;">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <!--Fin boton-->
+      <router-outlet></router-outlet>
+      <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container mt-3 uno">
+                    <div class="media border p-3 mb-2 bg-light text-dark">
+                        <div class="media-body mymediabody ">
+                            <div style="text-align: center;">
+                                <h3 style="color: black;"><b>ALUMNOS (INSCRIBIR)</b>
+                                </h3>
+                                
+                            </div>
+                            <hr>
+                            <div class="input-group input-focus">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text bg-white"><i class="fa fa-search" style="color: black;"></i></span>
+                                </div>
+                                <input type="text" class="form-control border-left-0 col-md-3 light-table-filter" data-table="order-table" placeholder="Buscar Alumno">
+                              </div><br>
+                            <div class="table-responsive">
+                                <table class="table table-hover table-bordered order-table">
+                                    <thead class="table-active">
+                                        <tr>
+                                            <th>CLAVE ÚNICA</th>
+                                            <th>NOMBRE</th>
+                                            <th>CORREO ELECTRÓNICO</th>
+                                            <th>TIPO</th>
+                                            <th>ACCIONES</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let datos of usuario;" style="color: black;">
+                                            <td>{{datos.clave_unica_alu}}</td>
+                                            <td>{{datos.nombre_alu}} {{datos.ap_pat_alu}} {{datos.ap_mat_alu}}</td>
+                                            <td>{{datos.correo_alu}}</td>
+                                            <td>{{datos.tipo_alu}}</td>
+                                            <td>
+                                              <div style="text-align: center;" >
+                                              <button class="btn btn-primary btn-md" data-toggle='modal' data-target='#modalEditar'  title="INSCRIBIR" (click)=obtAlumno(datos.clave_unica_alu)>
+                                                <i class="fa fa-edit" ></i></button></div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--MODAL PARA EDITAR-->
+<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title" id="exampleModalLongTitle">AÑADIR AL GRUPO</h1>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <div class="input-group-text">GRUPO:</div>
+            </div>
+             <!--   <ng-select [items]="grupo"  bindLabel="name" bindValue="name" [multiple]="false" ></ng-select> -->
+             <select id="select"  [(ngModel)]="nuevaInscripcion.id_grupo">
+                <option value="0" hidden>SELECCIONA UNA OPCIÓN</option>
+                <option *ngFor="let dato of grupo">
+                  {{dato.id_gru}} {{dato.nombre_gru}}
+                </option>
+              </select>
+        </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="inscribir()">Guardar</button>
+        </div>
+    </div>
+</div>
+</div>
+<!--FIN MODAL-->
+      </div>
+      <!--FIN CODIGO-->
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+

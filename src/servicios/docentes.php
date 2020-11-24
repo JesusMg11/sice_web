@@ -10,7 +10,19 @@ switch($_SERVER['REQUEST_METHOD']){
         if(isset($_GET['id'])){
            // $where = array('correo_mae'=>$_GET['correo']);
            // $res = $tabla->ReadAll($where);
-           $res = $tabla->ReadAll();
+           /*$reg = $tabla->ReadAll();
+          $query = "select ma.id_mae, ma.nombre_mae, ma.ap_pat_mae, ma.ap_mat_mae, ma.correo_mae, ma.telefono_mae, gr.id_gru, gr.nombre_gru
+          from maestros as ma inner join grupos as gr on
+          ma.id_mae = gr.id_maestro_gru";*/
+         // where ma.id_mae=".$_GET['id']; 
+       //  $query = "SELECT nombre_gru, id_maestro_gru from grupos ";
+        //  $res = $tabla -> query($query); 
+         // echo json_encode($query);
+         // $res = array("res" => $reg, "gru" => $ren);
+            $res = $tabla->ReadAll();
+        }else if(isset($_GET['correo_mae'])){
+            $where = array('correo_mae'=>$_GET['correo_mae']);
+            $res = $tabla->ReadAll($where);
         }else{
             $res = $tabla->ReadAll();
         }

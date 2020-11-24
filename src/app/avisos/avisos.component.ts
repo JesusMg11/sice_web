@@ -36,6 +36,10 @@ export class AvisosComponent implements OnInit {
   grupos(){
     this.router.navigate(['/grupos']);
   }
+  alum(){
+    this.router.navigate(['/estudiantesAdmin']);
+  }
+
 
   agregarAviso(){
 

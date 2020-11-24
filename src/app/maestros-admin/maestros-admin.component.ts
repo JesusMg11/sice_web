@@ -11,6 +11,8 @@ import swal from 'sweetalert2';
 export class MaestrosAdminComponent implements OnInit {
 
   maestro: any;
+  gru: any;
+  grupo: any;
   ItemsArray= [];
   nuevoMaestro = {nombre:'', ap_pat:'', ap_mat:'', correo:'', telefono:'', contra:''};
   opened = false;
@@ -32,6 +34,10 @@ export class MaestrosAdminComponent implements OnInit {
   grupos(){
     this.router.navigate(['/grupos']);
   }
+  alum(){
+    this.router.navigate(['/estudiantesAdmin']);
+  }
+
 
 
   agregar(){
@@ -88,6 +94,20 @@ export class MaestrosAdminComponent implements OnInit {
         timer:2000
       })
     })
+  }
+
+  obtenerGrupo(){
+    this.datos.getGrupos("0").subscribe(res=>{
+      this.grupo = res;
+    }, error => {
+      swal.fire({
+        icon: 'error',
+        title: '¡Ups!',
+        text: 'No hay grupos aún',
+        timer:2000
+      })
+    })
+
   }
 
  

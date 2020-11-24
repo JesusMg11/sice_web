@@ -4,7 +4,7 @@
             <a mat-list-item (click)="inicio()">Inicio</a>
             <a mat-list-item (click)="docentes()">Docentes</a>
             <a mat-list-item (click)="grupos()">Grupos</a>
-            <a mat-list-item (click)="salir()">Alumnos</a>
+            <a mat-list-item (click)="alum()">Alumnos</a>
             <a mat-list-item (click)="avisos()">Avisos</a>
             <a mat-list-item (click)="salir()">Salir</a>
         </mat-nav-list>
@@ -29,11 +29,11 @@
                         <div class="media border p-3 mb-2 bg-light text-dark">
                             <div class="media-body mymediabody ">
                                 <div style="text-align: center;">
-                                    <h3 style="color: black;"><b>DOCENTES</b>
+                                    <h3 style="color: black;"><b>GRUPOS</b>
                                     </h3>
-                                    <button class="btn btn-primary btn-sm"
-                                        data-toggle='modal' data-target='#modalEditar'>
-                                        <i class="fa fa-address-book" style="color:white;font-size:20px"></i>
+                                    <button class="btn btn-primary btn-sm" data-toggle='modal'
+                                        data-target='#modalEditar'>
+                                        <i class="fa fa-plus-square" style="color:white;font-size:20px"></i>
                                         AGREGAR</button>
                                 </div>
                                 <hr>
@@ -46,18 +46,18 @@
                                                 <th>AÑO</th>
                                                 <th>MODALIDAD</th>
                                                 <th>LUGARES</th>
-                                                <th>ID DOCENTE</th>
+                                                <th>CLAVE DOCENTE</th>
                                                 <th>ACCIONES</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr  style="color: black;">
-                                                <td>--</td>
-                                                <td>--</td>
-                                                <td>--</td>
-                                                <td>--</td>
-                                                <td>--</td>
-                                                <td>--</td>
+                                            <tr *ngFor="let datos of grupo" style="color: black;">
+                                                <td>{{datos.nombre_gru}}</td>
+                                                <td>{{datos.periodo_gru}}</td>
+                                                <td>{{datos.anio_gru}}</td>
+                                                <td>{{datos.modalidad_gru}}</td>
+                                                <td>{{datos.lugares_gru}}</td>
+                                                <td>{{datos.id_maestro_gru}} - {{datos.nombre_mae}} {{datos.ap_pat_mae}} {{datos.ap_mat_mae}}</td>
                                                 <td></td>
                                             </tr>
                                         </tbody>
@@ -68,9 +68,73 @@
                     </div>
                 </div>
             </div>
+            <!--MODAL PARA EDITAR-->
+            <div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title" id="exampleModalLongTitle">AGREGAR GRUPO</h1>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">NOMBRE:</div>
+                                </div>
+                                <input type="text" class="form-control" id="nombre" placeholder="INGRESE EL NOMBRE"
+                                    style="text-transform: uppercase" [(ngModel)]="nuevoGrupo.nombre">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">PERIODO:</div>
+                                </div>
+                                    <ng-select [items]="periodo"  bindLabel="name" bindValue="name" [multiple]="false"  [(ngModel)]="nuevoGrupo.periodo"></ng-select>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">AÑO:</div>
+                                </div>
+                                <ng-select [items]="years" bindLabel="name" bindValue="name" [multiple]="false"  [(ngModel)]="nuevoGrupo.anio"></ng-select>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">MODALIDAD:</div>
+                                </div>
+                                <ng-select [items]="modalidad" bindLabel="name" bindValue="name" [multiple]="false"  [(ngModel)]="nuevoGrupo.modalidad"></ng-select>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">LUGARES:</div>
+                                </div>
+                                <input type="number" class="form-control" id="lugares"  placeholder="INGRESE EL MÁXIMO DE LUGARES" min="0" max="100"  
+                                [(ngModel)]="nuevoGrupo.lugares">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">CLAVE MAESTRO:</div>
+                                </div>
+                                <input type="number" class="form-control" id="lugares"  placeholder="INGRESE LA CLAVE:"   [(ngModel)]="nuevoGrupo.id_maestro">
+                            </div>
 
 
-            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="agregar()">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--FIN MODAL-->
 
         </div>
 

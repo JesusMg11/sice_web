@@ -42,7 +42,7 @@ class DataBase extends ConnectionDB {
         return $res;
     }
     public function query($sql){
-        $res = sql_query($sql);
+        $res = $this->sql_query($sql);
         return $res;
     }
 }
