@@ -1,10 +1,11 @@
 <!--Menu lateral inico-->
-<mat-sidenav-container>
+<mat-sidenav-container >
+  
     <mat-sidenav [(opened)]="opened">
       <mat-nav-list>
         <a mat-list-item (click)="inicio()">Inicio</a>
         <a mat-list-item (click)="salir()">Mi Información</a>
-        <a mat-list-item (click)="salir()">Calificaciones</a>
+        <a mat-list-item (click)="calificaciones()">Calificaciones</a>
         <a mat-list-item (click)="salir()">Salir</a>
       </mat-nav-list>
     </mat-sidenav>
@@ -17,7 +18,53 @@
     <!--Fin boton-->
     <router-outlet></router-outlet>
     <div class="container">
-        
+      
+      <div class="row">
+        <div class="col-md-12">
+            <div class="container mt-3 uno">
+                <div class="media border p-3 mb-2 bg-light text-dark">
+                    <div class="media-body mymediabody ">
+                        <div style="text-align: center;">
+                            <h3 style="color: black;"><b>GRUPOS</b>
+                            </h3>
+                            <div *ngFor = "let dt of docente">
+                              <button type="button" class="btn btn-primary" (click) ="tmpId(dt.id_mae)">Cargar Grupos</button>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="table-responsive">
+                            <table class="table table-hover table-bordered order-table">
+                                <thead class="table-active">
+                                    <tr>
+                                        <th>NOMBRE</th>
+                                        <th>PERIODO</th>
+                                        <th>AÑO</th>
+                                        <th>MODALIDAD</th>
+                                        <th>LUGARES</th>
+                                        <th>CLAVE DOCENTE</th>
+                                        <th>ACCIONES</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let datos of grupo" style="color: black;">
+                                        <td>{{datos.nombre_gru}}</td>
+                                        <td>{{datos.periodo_gru}}</td>
+                                        <td>{{datos.anio_gru}}</td>
+                                        <td>{{datos.modalidad_gru}}</td>
+                                        <td>{{datos.lugares_gru}}</td>
+                                        <td>{{datos.id_maestro_gru}} - {{datos.nombre_mae}} {{datos.ap_pat_mae}} {{datos.ap_mat_mae}}</td>
+                                        <td style="text-align: center;">
+                                          <button class="btn btn-primary btn-md" title="ENTRAR" (click)="cargarCalificacion(datos.id_gru)">
+                                              <i class="fa fa-sign-in" ></i></button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
     <!--FIN CODIGO-->
     </mat-sidenav-content>

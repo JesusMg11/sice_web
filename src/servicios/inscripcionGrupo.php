@@ -28,11 +28,15 @@ switch($_SERVER['REQUEST_METHOD']){
                   //  $query = "UPDATE grupos SET lugares_gru=(lugares_gru)-1 WHERE id_gru=".$_POST['id_gru'];
                   // $respuesta = $tabla -> query($query);
                  // $respuesta = $tabla -> update(array("data" => "lugares_gru=(lugares_gru)-1"), array("id_gru" => $_POST['id_gru']));
+                 $sentencia = "INSERT INTO cargar_calificaciones values (NULL,".$_POST['id_gru'].",'".$_POST['clave_unica_alu']."',0,0)";
+                    $exIns = $conexion -> query($sentencia);
                  $sql3 = "UPDATE grupos SET lugares_gru=(lugares_gru)-1 WHERE id_gru=".$_POST['id_gru'];
                  $exActu = $conexion -> query($sql3);
+                 
                    try{
                     $reg = $tabla->create($datos);
                     $res = array("result"=>"ok","msg"=>"Se guardo el grupo", "id"=>$reg);
+                    
                  }catch(PDOException $e){
                     $res = array("result"=>"no","msg"=>$e->getMessage());
                  }

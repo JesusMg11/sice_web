@@ -23,6 +23,10 @@ switch($_SERVER['REQUEST_METHOD']){
         }else if(isset($_GET['correo_mae'])){
             $where = array('correo_mae'=>$_GET['correo_mae']);
             $res = $tabla->ReadAll($where);
+        }else if(isset($_GET['soloId'])){
+            $query = "SELECT id_mae from maestros where correo_mae = '".$_GET['soloId']."'";
+            $res = $tabla -> query($query);
+           // echo json_encode($res);
         }else{
             $res = $tabla->ReadAll();
         }

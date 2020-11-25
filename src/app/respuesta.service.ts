@@ -13,6 +13,10 @@ export class RespuestaService {
   
   private cuenta = {user:""};
   private user = {user:""};
+  private docente = {id:""};
+  private clave = {id:""};
+  private grupo = {clave:""};
+  private claveGrupo = {clave:""};
   login(u, p){
     let Params = new HttpParams();
     Params = Params.append('user', u);
@@ -30,10 +34,30 @@ export class RespuestaService {
   setCuenta(user){
     this.cuenta.user = user;
   }
+
+  setGrupo(gr){
+    this.grupo.clave = gr;
+  }
+
+  setDocente(clave){
+    this.docente.id = clave;
+  }
+
+  getClaveDocente(){
+    this.clave.id = this.docente.id;
+    return this.clave;
+  }
+
   getCuenta(){
     this.user.user = this.cuenta.user;
     return this.user;
   }
+
+  getClaveGrupo(){
+    this.claveGrupo.clave = this.grupo.clave;
+    return this.claveGrupo;
+  }
+
   getUsusarios(u){
     let Params = new HttpParams();
     Params = Params.append('user', u);
@@ -96,6 +120,12 @@ export class RespuestaService {
     return this.http.get(URL + 'docentes.php', {params: Params});
   }
 
+  getOnlyIdDocente(correo){
+    let Params = new HttpParams();
+    Params = Params.append('soloId', correo);
+    return this.http.get(URL + 'docentes.php', {params: Params});
+  }
+
   postDocente(maestro){
     let formData = new FormData();
     formData.append('nombre', maestro.nombre);
@@ -123,6 +153,19 @@ export class RespuestaService {
   getGrupos(id){
     let Params = new HttpParams();
     Params = Params.append('id', id);
+    return this.http.get(URL + 'grupos.php', {params: Params});
+  }
+
+  getGruposDocente(id){
+    let Params = new HttpParams();
+    Params = Params.append('id_maestro', id);
+    return this.http.get(URL + 'grupos.php', {params: Params});
+  }
+
+  getGruposCal(id, grupo){
+    let Params = new HttpParams();
+    Params = Params.append('id_cal', id);
+    Params = Params.append('id_grupo', grupo);
     return this.http.get(URL + 'grupos.php', {params: Params});
   }
 

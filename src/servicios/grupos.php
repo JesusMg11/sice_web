@@ -18,8 +18,23 @@ switch($_SERVER['REQUEST_METHOD']){
         }else if(isset($_GET['bandera'])){
             $query = "SELECT * FROM grupos WHERE bandera_gru!='false'";
            $res = $tabla -> query($query);
+        }else if(isset($_GET['id_maestro'])){
+            // $where = array('id_maestro_gru'=>$_GET['id_maestro']);
+           // $res = $tabla->ReadAll($where);
+           $query = "SELECT gr.id_gru, gr.nombre_gru, gr.periodo_gru, gr.anio_gru, gr.modalidad_gru, gr.lugares_gru, gr.id_maestro_gru, ma.nombre_mae, ma.ap_pat_mae, ma.ap_mat_mae
+           from grupos as gr inner join maestros as ma on
+           ma.id_mae = gr.id_maestro_gru WHERE gr.id_maestro_gru = ".$_GET['id_maestro'];
+          $res = $tabla -> query($query);
+        }else if(isset($_GET['id_cal']) && isset($_GET['id_grupo'])){
+            $query = "SELECT gr.id_gru, gr.nombre_gru, gr.periodo_gru, gr.anio_gru, gr.modalidad_gru, gr.lugares_gru, gr.id_maestro_gru, gr.bandera_gru, ig.id_ing, ig.id_alumno_ing, ig.id_grupo_ing,
+            al.nombre_alu, al.ap_pat_alu, al.ap_mat_alu, al.correo_alu, c.cal1_cc, c.cal2_cc
+            from grupos as gr inner join inscripcion_grupo as ig on gr.id_gru = ig.id_grupo_ing 
+            inner join alumnos as al on  al.clave_unica_alu = ig.id_alumno_ing
+            inner join cargar_calificaciones as c on al.clave_unica_alu = c.clave_alu_cc
+            where gr.id_maestro_gru = ".$_GET['id_cal']." and gr.id_gru =".$_GET['id_grupo'];
+          $res = $tabla -> query($query);
         }else{
-            
+
         }
         header("HTTP/1.1 200 OK");
         echo json_encode($res);

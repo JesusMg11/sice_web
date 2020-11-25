@@ -25,6 +25,8 @@ export class CalificacionesComponent implements OnInit {
 
   }
 
+  
+
 
   ngOnInit(): void {
   }

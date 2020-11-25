@@ -22,6 +22,9 @@ export class MaestrosComponent implements OnInit {
   salir (){
 this.router.navigate(['/inicio']);
   }
+  calificaciones(){
+    this.router.navigate(['/calificacionesMaestros']);
+  }
 
   datosDocente(){
     this.datos.getOnlyDocente(this.maestro).subscribe(resp => {
