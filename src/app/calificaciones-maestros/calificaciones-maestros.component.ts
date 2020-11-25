@@ -25,6 +25,9 @@ export class CalificacionesMaestrosComponent implements OnInit {
   salir (){
 this.router.navigate(['/inicio']);
   }
+  informacion(){
+    this.router.navigate(['/informacionMaestros']);
+  }
   cargarCalificacion(grupo){
     this.datos.setGrupo(grupo);
     this.router.navigate(['/cargar']);

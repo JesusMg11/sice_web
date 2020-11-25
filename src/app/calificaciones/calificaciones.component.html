@@ -17,9 +17,57 @@
     <!--Fin boton-->
     <router-outlet></router-outlet>
     <div class="container">
-      <div class="row">
-        <p>Inicio calificaciones</p>
+        
+
+        <div class="row">
+          <div class="col-md-12">
+              <div class="container mt-3 uno">
+                  <div class="media border p-3 mb-2 bg-light text-dark">
+                      <div class="media-body mymediabody ">
+                          <div style="text-align: center;">
+                              <h3 style="color: black;"><b>CALIFICACIONES</b>
+                              </h3>
+                             
+                          </div>
+                          <hr>
+                          <div class="table-responsive">
+                              <table class="table table-hover table-bordered order-table">
+                                  <thead class="table-active">
+                                      <tr>
+                                          <th>GRUPO</th>
+                                          <th>PERIODO</th>
+                                          <th>AÑO</th>
+                                          <th>CLAVE ALUMNO</th>
+                                          <th>NOMBRE MAESTRO</th>
+                                          <th>TELEFONO MAESTRO</th>
+                                          <th>CORREO MAESTRO</th>
+                                          <th>PARCIAL 1</th>
+                                          <th>PARCIAL 2</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr *ngFor="let datos of grupo" style="color: black;">
+                                          <td>{{datos.nombre_gru}}</td>
+                                          <td>{{datos.periodo_gru}}</td>
+                                          <td>{{datos.anio_gru}}</td>
+                                          <td>{{datos.id_alumno_ing}}</td>
+                                          <td>{{datos.nombre_mae}} {{datos.ap_pat_mae}} {{datos.ap_mat_mae}}</td>
+                                          <td>{{datos.telefono_mae}}</td>
+                                          <td>{{datos.correo_mae}}</td>
+                                          <td>{{datos.cal1_cc}}</td>
+                                          <td>{{datos.cal2_cc}}</td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
       </div>
+
+
+
     </div>
     <!--FIN CODIGO-->
     </mat-sidenav-content>

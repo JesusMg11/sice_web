@@ -162,6 +162,12 @@ export class RespuestaService {
     return this.http.get(URL + 'grupos.php', {params: Params});
   }
 
+  getGrupoAlumno(id){
+    let Params = new HttpParams();
+    Params = Params.append('clave_alu', id);
+    return this.http.get(URL + 'grupos.php', {params: Params});
+  }
+
   getGruposCal(id, grupo){
     let Params = new HttpParams();
     Params = Params.append('id_cal', id);
@@ -181,6 +187,16 @@ export class RespuestaService {
     formData.append('id_gru',datos.id_grupo);
 
     return this.http.post(URL + "inscripcionGrupo.php", formData);
+  }
+
+  postNota(datos){
+    let formData = new FormData();
+    formData.append('id_grupo', datos.id_grupo);
+    formData.append('clave_alu',datos.clave_alu);
+    formData.append('cal1',datos.cal1);
+    formData.append('cal2',datos.cal2);
+
+    return this.http.post(URL + "cargarNota.php", formData);
   }
 
 }

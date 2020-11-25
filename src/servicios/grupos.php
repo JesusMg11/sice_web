@@ -33,6 +33,16 @@ switch($_SERVER['REQUEST_METHOD']){
             inner join cargar_calificaciones as c on al.clave_unica_alu = c.clave_alu_cc
             where gr.id_maestro_gru = ".$_GET['id_cal']." and gr.id_gru =".$_GET['id_grupo'];
           $res = $tabla -> query($query);
+        }else if(isset($_GET['clave_alu'])){
+            $query = "SELECT gr.id_gru, gr.nombre_gru, gr.periodo_gru, gr.anio_gru, gr.modalidad_gru, gr.lugares_gru, gr.id_maestro_gru, gr.bandera_gru, ig.id_ing, ig.id_alumno_ing, ig.id_grupo_ing,
+            al.nombre_alu, al.ap_pat_alu, al.ap_mat_alu, al.correo_alu, c.cal1_cc, c.cal2_cc, ma.nombre_mae, ma.ap_pat_mae, ma.ap_mat_mae, ma.telefono_mae, ma.correo_mae
+            from grupos as gr inner join inscripcion_grupo as ig on gr.id_gru = ig.id_grupo_ing 
+            inner join alumnos as al on  al.clave_unica_alu = ig.id_alumno_ing
+            inner join cargar_calificaciones as c on al.clave_unica_alu = c.clave_alu_cc
+            inner join maestros as ma on
+            ma.id_mae = gr.id_maestro_gru
+            where ig.id_alumno_ing = '".$_GET['clave_alu']."'";
+          $res = $tabla -> query($query);
         }else{
 
         }

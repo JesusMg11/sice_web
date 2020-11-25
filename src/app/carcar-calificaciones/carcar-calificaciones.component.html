@@ -3,7 +3,7 @@
     <mat-sidenav [(opened)]="opened">
       <mat-nav-list>
         <a mat-list-item (click)="inicio()">Inicio</a>
-        <a mat-list-item (click)="salir()">Mi Información</a>
+        <a mat-list-item (click)="informacion()">Mi Información</a>
         <a mat-list-item (click)="calificaciones()">Calificaciones</a>
         <a mat-list-item (click)="salir()">Salir</a>
       </mat-nav-list>
@@ -52,8 +52,12 @@
                                             <td>{{datos.id_alumno_ing}}</td>
                                             <td>{{datos.nombre_alu}} {{datos.ap_pat_alu}} {{datos.ap_mat_alu}}</td>
                                             <td>{{datos.cal1_cc}}</td>
-                                            <td>{{datos.cal1_cc}}</td>
-                                            <td></td>
+                                            <td>{{datos.cal2_cc}}</td>
+                                            <td>
+                                                <div style="text-align: center;" >
+                                                    <button class="btn btn-primary btn-md" data-toggle='modal' data-target='#modalEditar'  title="CARGAR" (click)=obtAlumno(datos.id_alumno_ing,datos.cal1_cc,datos.cal2_cc)>
+                                                      <i class="fa fa-edit" ></i></button></div>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -64,7 +68,43 @@
             </div>
         </div>
 
+        <!--MODAL PARA EDITAR-->
+<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title" id="exampleModalLongTitle">CARGAR CALIFICACION</h1>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
 
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">PARCIAL 1:</div>
+                </div>
+                <input type="number" class="form-control" id="p1"  placeholder="0"  min="0" max="100" [(ngModel)]="nuevaCalificacion.cal1">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">PARCIAL 2:</div>
+                </div>
+                <input type="number" class="form-control" id="p2"  placeholder="0"  min="0" max="100" [(ngModel)]="nuevaCalificacion.cal2">
+            </div>
+            <p>En caso de solo ingresar una calificación, colocar un 0 en la que no se asignará.</p>
+        </div>
+        
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="inscripcion()">Guardar</button>
+        </div>
+    </div>
+</div>
+</div>
+<!--FIN MODAL-->
       </div>
     <!--FIN CODIGO-->
     </mat-sidenav-content>
